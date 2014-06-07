@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="appSettings.txt" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\kg.com.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -101,6 +102,7 @@
     </Compile>
     <Compile Include="LinkImageService.cs" />
     <Compile Include="LinkUrlService.cs" />
+    <Compile Include="Models\BadLinksWithoutImages.cs" />
     <Compile Include="Models\LinkImages.cs" />
     <Compile Include="Models\LinkUrls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

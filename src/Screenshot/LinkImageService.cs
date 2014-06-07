@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using Amazon.Glacier;
 using Screenshot.Models;
 using ServiceStack;
@@ -23,6 +24,19 @@ namespace Screenshot
             return HttpError.NotFound("Couldn't find link image");
         }
 
+        public object Get(StartGetImages request)
+        {
+
+            var ssService = ResolveService<ScreenshotService>();
+            
+           var linksWithoutImages = Db.SqlList<BadLinksWithoutImages>("exec usp_get_links_without_images")
+               .Select(x => x.Url)
+               .ToList();
+
+            linksWithoutImages.ForEach(x => ssService.Get(new GetScreenshot {Url = x}));
+
+            return "finished";
+        }
         public object Put(ModifyImage request)
         {
             Db.UpdateOnly(new LinkImages {ImageUrl = request.ImageUrl}, x => x.ImageUrl, x => x.UrlId == request.UrlId);
@@ -49,6 +63,10 @@ namespace Screenshot
             return new HttpResult(newImage, HttpStatusCode.Created);
         }
          
+    }
+
+    public class StartGetImages
+    {
     }
 
     public class ModifyImage

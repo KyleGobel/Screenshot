@@ -34,7 +34,9 @@ namespace Screenshot
             }
 
             Routes.Add<FindLinkUrl>("/urls/{Id}", "GET")
-                .Add<AddLinkUrl>("/urls", "POST");
+                .Add<AddLinkUrl>("/urls", "POST")
+                .Add<StartGetImages>("/start", "GET");
+
         }
     }
 }
