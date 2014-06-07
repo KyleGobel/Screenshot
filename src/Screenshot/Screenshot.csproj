@@ -81,7 +81,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="appSettings.txt" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\kg.com.pubxml" />
     <None Include="Web.Debug.config">

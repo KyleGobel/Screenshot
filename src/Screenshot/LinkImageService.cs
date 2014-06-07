@@ -37,6 +37,7 @@ namespace Screenshot
 
             return "finished";
         }
+
         public object Put(ModifyImage request)
         {
             Db.UpdateOnly(new LinkImages {ImageUrl = request.ImageUrl}, x => x.ImageUrl, x => x.UrlId == request.UrlId);
