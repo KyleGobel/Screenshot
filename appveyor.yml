@@ -1,0 +1,7 @@
+version: 1.0.{build}
+
+build:
+  publish_wap: true #pkg for web deploy
+  
+before_build:
+  -  nuget restore src/Screenshot.sln -verbosity detailed
