@@ -26,6 +26,7 @@ namespace Screenshot
             AwsAccessKey = appSettings.Get("awsAccessKey");
             AwsSecretKey = appSettings.Get("awsSecretKey");
 
+            Plugins.Add(new CorsFeature());
 
             using (var db = container.Resolve<IDbConnectionFactory>().Open())
             {

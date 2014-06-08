@@ -146,6 +146,5 @@ namespace Screenshot
     public class GetScreenshot
     {
         public string Url { get; set; }
-        public string SavePath { get; set; }
     }
 }
