@@ -195,7 +195,9 @@
     <Content Include="phantomjs\examples\waitfor.js" />
     <Content Include="phantomjs\examples\walk_through_frames.js" />
     <Content Include="phantomjs\examples\weather.js" />
-    <Content Include="phantomjs\phantomjs.exe" />
+    <Content Include="phantomjs\phantomjs.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="phantomjs\third-party.txt" />
     <Content Include="screenshot\template.js" />
     <Content Include="screenshot\tmp.js" />

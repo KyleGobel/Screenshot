@@ -90,13 +90,13 @@ namespace Screenshot
             var outputText = PopulateTemplate(template, tokenValues);
             var tmp = "~/screenshot/tmp.js".MapHostAbsolutePath();
             File.WriteAllText(tmp, outputText);
-            var phantomJsPath = "~/../../ext/phantomjs/phantomjs.exe".MapHostAbsolutePath();
+            var phantomJsPath = "~/phantomjs/phantomjs.exe".MapHostAbsolutePath();
 
             var psi = new ProcessStartInfo(phantomJsPath)
             {
                 Arguments = "'" + tmp + "'",
                 UseShellExecute = true,
-                WorkingDirectory = "~/../../".MapHostAbsolutePath(),
+                WorkingDirectory = "~/".MapHostAbsolutePath(),
                 WindowStyle = ProcessWindowStyle.Normal
             };
 
@@ -108,7 +108,7 @@ namespace Screenshot
                 process.WaitForExit(1000*60); 
             }
 
-            return  ("~/../../" + savePath).MapHostAbsolutePath();
+            return  ("~/" + savePath).MapHostAbsolutePath();
         }
         static string UploadScreenShotToS3(string filename, string awsAccessKey, string awsSecretKey)
         {

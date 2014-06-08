@@ -1,5 +1,5 @@
 var page = require('webpage').create();
 page.open("http://www.google.com", function() {
-  page.render("screenshot/d1bf52a2f18b4c288ff6d6a6ed699639.png");
+  page.render("screenshot/8bec8212ef40436d8fe51f3aad350a77.png");
   phantom.exit();
 });
