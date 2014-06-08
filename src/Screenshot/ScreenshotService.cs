@@ -10,14 +10,18 @@ using Amazon.S3.Model;
 using Screenshot.Models;
 using ServiceStack;
 using ServiceStack.Configuration;
+using ServiceStack.Logging;
 
 namespace Screenshot
 {
     public class ScreenshotService : Service
     {
+        public ILog Logger { get; set; }
         public object Get(GetScreenshot request)
         {
+            Logger.Debug("Getting a screenshot");
             var screenShotFilePath = GetScreenShot(request.Url);
+            Logger.DebugFormat("got screenshot and placed at filepath {0}", screenShotFilePath);
             var urlId = GetOrCreateLinkUrlId(request.Url);
 
             var resultFilePath = RenameFileToUrlId(screenShotFilePath, urlId);
@@ -84,7 +88,9 @@ namespace Screenshot
 
         string GetScreenShot(string url)
         {
+            Logger.Debug("Attempting to read template");
             var template = ReadJsTemplate();
+            Logger.Debug("found and read the js template");
             var savePath = "screenshot/" + Guid.NewGuid().ToString("N") + ".png";
             var tokenValues = new Dictionary<string, string>
             {
@@ -141,6 +147,7 @@ namespace Screenshot
         private string ReadJsTemplate()
         {
             var path = "~/screenshot/template.js".MapHostAbsolutePath();
+            Logger.DebugFormat("Reading template from {0}",path);
             return File.ReadAllText(path);
         }
     }

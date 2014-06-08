@@ -3,6 +3,8 @@ using Screenshot.Models;
 using ServiceStack;
 using ServiceStack.Configuration;
 using ServiceStack.Data;
+using ServiceStack.Logging;
+using ServiceStack.Logging.Log4Net;
 using ServiceStack.OrmLite;
 using ServiceStack.Text;
 
@@ -22,6 +24,11 @@ namespace Screenshot
             container.Register<IDbConnectionFactory>(c => new OrmLiteConnectionFactory(
                 appSettings.Get("database"), 
                 SqlServerDialect.Provider));
+
+
+            container.Register(x => new Log4NetFactory(true));
+            LogManager.LogFactory = container.Resolve<Log4NetFactory>();
+            container.Register<ILog>(x => LogManager.GetLogger(GetType()));
 
             AwsAccessKey = appSettings.Get("awsAccessKey");
             AwsSecretKey = appSettings.Get("awsSecretKey");
