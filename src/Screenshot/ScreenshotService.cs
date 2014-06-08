@@ -23,6 +23,11 @@ namespace Screenshot
             var resultFilePath = RenameFileToUrlId(screenShotFilePath, urlId);
             UploadScreenShotToS3(resultFilePath, AppHost.AwsAccessKey, AppHost.AwsSecretKey);
 
+
+            //delete the file after uploading to s3
+            if (File.Exists(resultFilePath))
+                File.Delete(resultFilePath);
+
             var imageUrl = SaveUrlImage(Path.GetFileName(resultFilePath), urlId);
             return new
             {
