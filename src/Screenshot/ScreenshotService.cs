@@ -80,7 +80,7 @@ namespace Screenshot
         string GetScreenShot(string url)
         {
             var template = ReadJsTemplate();
-            var savePath = "screenshots/" + Guid.NewGuid().ToString("N") + ".png";
+            var savePath = "screenshot/" + Guid.NewGuid().ToString("N") + ".png";
             var tokenValues = new Dictionary<string, string>
             {
                 {"#URL#", url},
@@ -88,7 +88,7 @@ namespace Screenshot
             };
 
             var outputText = PopulateTemplate(template, tokenValues);
-            var tmp = "~/../../screenshots/tmp.js".MapHostAbsolutePath();
+            var tmp = "~/screenshot/tmp.js".MapHostAbsolutePath();
             File.WriteAllText(tmp, outputText);
             var phantomJsPath = "~/../../ext/phantomjs/phantomjs.exe".MapHostAbsolutePath();
 
@@ -135,7 +135,7 @@ namespace Screenshot
         }
         private string ReadJsTemplate()
         {
-            var path = "~/../../screenshots/template.js".MapHostAbsolutePath();
+            var path = "~/screenshot/template.js".MapHostAbsolutePath();
             return File.ReadAllText(path);
         }
     }

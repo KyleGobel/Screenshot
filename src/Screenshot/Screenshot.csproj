@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="screenshot\template.js" />
+    <Content Include="screenshot\tmp.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
