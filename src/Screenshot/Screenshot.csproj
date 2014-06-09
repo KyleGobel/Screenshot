@@ -210,12 +210,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminService.cs" />
     <Compile Include="AppHost.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LinkImageService.cs" />
     <Compile Include="LinkUrlService.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\BadLinksWithoutImages.cs" />
     <Compile Include="Models\LinkImages.cs" />
     <Compile Include="Models\LinkUrls.cs" />
