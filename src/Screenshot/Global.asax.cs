@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using ServiceStack;
 using ServiceStack.Logging;
 using ServiceStack.Logging.Log4Net;
 
@@ -14,6 +15,7 @@ namespace Screenshot
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            Licensing.RegisterLicenseFromFileIfExists("~/license.txt".MapHostAbsolutePath());
             log4net.Config.XmlConfigurator.Configure();
             (new AppHost()).Init();
 
