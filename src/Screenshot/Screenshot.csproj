@@ -216,9 +216,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="LinkImageService.cs" />
+    <Compile Include="LinkService.cs" />
     <Compile Include="LinkUrlService.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\BadLinksWithoutImages.cs" />
+    <Compile Include="Models\Link.cs" />
     <Compile Include="Models\LinkImages.cs" />
     <Compile Include="Models\LinkUrls.cs" />
     <Compile Include="Models\Whitelist.cs" />
